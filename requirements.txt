@@ -1,0 +1,8 @@
+# runtime dependencies
+requests==2.28.2
+beautifulsoup4==4.11.2
+python-dateutil==2.8.2
+
+# dev dependencies
+pip_audit==2.4.13
+pylint==2.15.10

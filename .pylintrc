@@ -1,0 +1,15 @@
+[MESSAGES CONTROL]
+disable=
+
+[VARIABLES]
+const-naming-style=snake_case
+class-const-naming-style=snake_case
+good-names=id
+
+[SIMILARITIES]
+min-similarity-lines=4
+ignore-comments=yes
+ignore-imports=yes
+
+[FORMAT]
+max-line-length=120
