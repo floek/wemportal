@@ -1,10 +1,9 @@
 name: Test and lint
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ main ]
   pull_request:
-    branches: [ $default-branch ]
-  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
   build:
