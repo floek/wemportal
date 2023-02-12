@@ -1,5 +1,6 @@
 # Python wemportal module
-[![Test and lint](https://github.com/floek/wemportal/actions/workflows/test.yml/badge.svg)](https://github.com/floek/wemportal/actions/workflows/test.yml)
+[![Tests](https://github.com/floek/wemportal/actions/workflows/test.yml/badge.svg)](https://github.com/floek/wemportal/actions/workflows/test.yml)
+[![PyPi](https://github.com/floek/wemportal/actions/workflows/publish-release.yml/badge.svg)](https://github.com/floek/wemportal/actions/workflows/publish-release.yml)
 
 I wanted to scrape the Weishaupt WEM Portal without using [Home Assistant](https://home-assistant.io/).
 @erikkastelec created a nice project [hass-WEM-Portal](https://github.com/erikkastelec/hass-WEM-Portal), so
@@ -46,7 +47,7 @@ for device in devices:
 
 ## Reporting bugs or incorrect results
 
-If you find a bug in puppet-lint or its results, please create an issue in the
+If you find a bug, please create an issue in the
 [repo issues tracker](https://github.com/floek/wemportal/issues/).
 
 ## Please contribute
