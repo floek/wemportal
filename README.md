@@ -1,4 +1,5 @@
 # Python wemportal module
+[![Test and lint](https://github.com/floek/wemportal/actions/workflows/test.yml/badge.svg)](https://github.com/floek/wemportal/actions/workflows/test.yml)
 
 I wanted to scrape the Weishaupt WEM Portal without using [Home Assistant](https://home-assistant.io/).
 @erikkastelec created a nice project [hass-WEM-Portal](https://github.com/erikkastelec/hass-WEM-Portal), so
