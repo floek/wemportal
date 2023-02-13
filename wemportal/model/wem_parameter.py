@@ -15,6 +15,7 @@ class DataType(IntEnum):
     time = 2
     value = 3
     program = 6
+    decimal_value = -1
 
 
 @dataclass()

@@ -19,7 +19,11 @@ class WemPortalAPI:
 
     def __init__(self, username: str, password: str):
         self.devices: List[WemDevice] = []
-        self.headers: Dict = {}
+        self.headers: Dict = {
+            "User-Agent": "WeishauptWEMApp",
+            "X-Api-Version": "2.0.0.0",
+            "Accept": "*/*",
+        }
         self.session: Optional[Session] = None
         self.username: str = username
         self.password: str = password
@@ -28,7 +32,6 @@ class WemPortalAPI:
         """Login to api"""
         self.session = requests.Session()
         self.session.cookies.clear()
-
         payload = {
             "Name": self.username,
             "PasswordUTF8": self.password,
@@ -63,9 +66,8 @@ class WemPortalAPI:
     def get_devices(self):
         """Fetching api device data"""
         LOGGER.debug("Fetching api device data")
-
         response = self.session.get(
-            f"{wem_url}/app/device/Read",
+            f"{wem_url}/app/device/Read"
         )
         data = response.json()
         self.devices = []

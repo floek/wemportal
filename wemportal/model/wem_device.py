@@ -13,6 +13,7 @@ class DeviceType(IntEnum):
     Types of devices
     """
     combi_boiler = 1 # NOTE: just guessing
+    heating_pump = 2
 
 
 class ConnectionStatus(IntEnum):
