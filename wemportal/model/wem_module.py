@@ -20,6 +20,8 @@ class ModuleType(IntEnum):
     we = 7
     device = 9
     ground_module = 10
+    test = 240
+    sensor = 241
 
 
 @dataclass
