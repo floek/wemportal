@@ -6,7 +6,7 @@ from enum import IntEnum
 from typing import List, Dict, Optional
 
 from wemportal.model.wem_module import WemModule, WemModuleParser
-from wemportal.model.wem_statistic import WemHeatingStatistic, WemHotWaterStatistic
+from wemportal.model.wem_statistic import WemHeatingStatistic, WemHotWaterStatistic, WemSummaryStatistic, WemDefrostStatistic, WemCoolingStatistic
 
 class DeviceType(IntEnum):
     """
@@ -37,6 +37,9 @@ class WemDevice():
     has_errors: bool
     heating_statistic: Optional[WemHeatingStatistic]
     hot_water_statistic: Optional[WemHotWaterStatistic]
+    summary_statistic: Optional[WemSummaryStatistic]
+    defrost_statistic: Optional[WemDefrostStatistic]
+    cooling_statistic: Optional[WemCoolingStatistic]
 
     def get_parameter_query(self):
         """Build query for parameters"""
@@ -101,5 +104,8 @@ class WemDeviceParser:
             connection_status = ConnectionStatus(device["ConnectionStatus"]),
             has_errors = device["HasErrors"],
             heating_statistic=None,
-            hot_water_statistic=None
+            hot_water_statistic=None,
+            summary_statistic=None,
+            defrost_statistic=None,
+            cooling_statistic=None
         )

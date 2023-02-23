@@ -16,6 +16,8 @@ class StatisticType(IntEnum):
     heating = 1
     hot_water = 2
     summary = 3
+    defrost = 4
+    cooling = 5
 
 
 class GraphType(IntEnum):
@@ -57,6 +59,21 @@ class WemHotWaterStatistic(WemStatistic):
     """Manage statistics with values for hot water system"""
     statistics_type = StatisticType.hot_water
 
+@dataclass
+class WemSummaryStatistic(WemStatistic):
+    """Manage statistics with summary values for the system"""
+    statistics_type = StatisticType.summary
+
+@dataclass
+class WemDefrostStatistic(WemStatistic):
+    """Manage statistics with defrost values for the system"""
+    statistics_type = StatisticType.defrost
+
+@dataclass
+class WemCoolingStatistic(WemStatistic):
+    """Manage statistics with values for the cooling system"""
+    statistics_type = StatisticType.cooling
+
 
 class StatisticValueParser:
     """Parser for statistic values"""
@@ -92,6 +109,51 @@ class WemHotWaterStatisticParser:
         """load object from dict"""
         return WemHotWaterStatistic(
             statistics_type = StatisticType.hot_water,
+            graph_type = graph_type,
+            has_data = statistic["HasData"],
+            max_date = parser.parse(statistic["MaxDate"]),
+            min_date = parser.parse(statistic["MinDate"]),
+            unit = statistic["Unit"],
+            values = [StatisticValueParser.load(value) for value in statistic["Data"]]
+        )
+
+class WemSummaryStatisticParser:
+    """Parser for summary statistics with values for system"""
+    @staticmethod
+    def load(statistic: Dict, graph_type: GraphType) -> WemSummaryStatistic:
+        """load object from dict"""
+        return WemSummaryStatistic(
+            statistics_type = StatisticType.summary,
+            graph_type = graph_type,
+            has_data = statistic["HasData"],
+            max_date = parser.parse(statistic["MaxDate"]),
+            min_date = parser.parse(statistic["MinDate"]),
+            unit = statistic["Unit"],
+            values = [StatisticValueParser.load(value) for value in statistic["Data"]]
+        )
+
+class WemDefrostStatisticParser:
+    """Parser for statistics with values for defrost system"""
+    @staticmethod
+    def load(statistic: Dict, graph_type: GraphType) -> WemDefrostStatistic:
+        """load object from dict"""
+        return WemDefrostStatistic(
+            statistics_type = StatisticType.defrost,
+            graph_type = graph_type,
+            has_data = statistic["HasData"],
+            max_date = parser.parse(statistic["MaxDate"]),
+            min_date = parser.parse(statistic["MinDate"]),
+            unit = statistic["Unit"],
+            values = [StatisticValueParser.load(value) for value in statistic["Data"]]
+        )
+
+class WemCoolingStatisticParser:
+    """Parser for statistics with values for cooling system"""
+    @staticmethod
+    def load(statistic: Dict, graph_type: GraphType) -> WemCoolingStatistic:
+        """load object from dict"""
+        return WemCoolingStatistic(
+            statistics_type = StatisticType.cooling,
             graph_type = graph_type,
             has_data = statistic["HasData"],
             max_date = parser.parse(statistic["MaxDate"]),
