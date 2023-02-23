@@ -9,7 +9,8 @@ from wemportal.constants import wem_url, LOGGER
 from wemportal.exceptions import WemPortalConnectionError
 from wemportal.model.wem_device import WemDevice
 from wemportal.model.wem_statistic import GraphType, StatisticType, \
-    WemHeatingStatisticParser, WemHotWaterStatisticParser, WemSummaryStatisticParser, WemDefrostStatisticParser, WemCoolingStatisticParser
+    WemHeatingStatisticParser, WemHotWaterStatisticParser, WemSummaryStatisticParser, \
+    WemDefrostStatisticParser, WemCoolingStatisticParser
 
 class WemPortalWeb:
     """
