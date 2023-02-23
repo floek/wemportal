@@ -27,6 +27,9 @@ class WemPortal:
         for device in devices:
             self.__web.get_heating_statistic(device)
             self.__web.get_hot_water_statistic(device)
+            self.__web.get_summary_statistic(device)
+            self.__web.get_defrost_statistic(device)
+            self.__web.get_cooling_statistic(device)
 
         return devices
 

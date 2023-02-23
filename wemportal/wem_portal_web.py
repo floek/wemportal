@@ -9,8 +9,8 @@ from wemportal.constants import wem_url, LOGGER
 from wemportal.exceptions import WemPortalConnectionError
 from wemportal.model.wem_device import WemDevice
 from wemportal.model.wem_statistic import GraphType, StatisticType, \
-    WemHeatingStatisticParser, WemHotWaterStatisticParser
-
+    WemHeatingStatisticParser, WemHotWaterStatisticParser, WemSummaryStatisticParser, \
+    WemDefrostStatisticParser, WemCoolingStatisticParser
 
 class WemPortalWeb:
     """
@@ -19,6 +19,7 @@ class WemPortalWeb:
 
     def __init__(self, username: str, password: str):
         self.session: Session = requests.Session()
+        self.session.headers.update({'User-Agent': 'Mozilla/5.0"'})
         self.session.cookies.clear()
         self.username: str = username
         self.password: str = password
@@ -90,6 +91,31 @@ class WemPortalWeb:
         data = self.__get_raw_statistic(device=device, statistics_type=StatisticType.hot_water, graph_type = graph_type)
         hot_water_statistic = WemHotWaterStatisticParser.load(statistic=data, graph_type=graph_type)
         device.hot_water_statistic = hot_water_statistic
+        return device
+
+    def get_summary_statistic(self, device: WemDevice):
+        """Retrieve statistics for hot water system"""
+        graph_type = GraphType.daily
+        data = self.__get_raw_statistic(device=device, statistics_type=StatisticType.summary, graph_type = graph_type)
+        summary_statistic = WemSummaryStatisticParser.load(statistic=data, graph_type=graph_type)
+        device.summary_statistic = summary_statistic
+        return device
+
+    def get_defrost_statistic(self, device: WemDevice):
+        """Retrieve statistics for hot water system"""
+        graph_type = GraphType.daily
+        data = self.__get_raw_statistic(device=device, statistics_type=StatisticType.defrost, graph_type = graph_type)
+        defrost_statistic = WemDefrostStatisticParser.load(statistic=data, graph_type=graph_type)
+        device.defrost_statistic = defrost_statistic
+        return device
+
+
+    def get_cooling_statistic(self, device: WemDevice):
+        """Retrieve statistics for hot water system"""
+        graph_type = GraphType.daily
+        data = self.__get_raw_statistic(device=device, statistics_type=StatisticType.cooling, graph_type = graph_type)
+        cooling_statistic = WemCoolingStatisticParser.load(statistic=data, graph_type=graph_type)
+        device.cooling_statistic = cooling_statistic
         return device
 
     def logout(self):
