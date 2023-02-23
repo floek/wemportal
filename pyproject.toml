@@ -7,7 +7,7 @@ exclude = ["tests"]  # exclude packages matching these glob patterns (empty by d
 
 [project]
 name = "wemportal"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="floek", email="root@floek.net" },
 ]
