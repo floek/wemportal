@@ -20,7 +20,10 @@ class ConnectionStatus(IntEnum):
     """
     Type for Connection status
     """
-    connected = 0 # NOTE: just guessing
+    online = 0
+    offline = 50
+    busy = 8
+    wrong_secret = 7
 
 
 @dataclass
