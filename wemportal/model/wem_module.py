@@ -15,6 +15,7 @@ class ModuleType(IntEnum):
     system = 1
     heater_circuit = 2
     hot_water_circuit = 3
+    solar = 4
     terminal = 5
     gateway = 6
     we = 7
@@ -22,6 +23,7 @@ class ModuleType(IntEnum):
     ground_module = 10
     test = 240
     sensor = 241
+    external = 255
 
 
 @dataclass
