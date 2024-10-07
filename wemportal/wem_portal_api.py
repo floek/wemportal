@@ -67,7 +67,7 @@ class WemPortalAPI:
         """Fetching api device data"""
         LOGGER.debug("Fetching api device data")
         response = self.session.get(
-            f"{wem_url}/app/device/Read"
+            f"{wem_url}/app/Device/Read"
         )
         data = response.json()
         self.devices = []
