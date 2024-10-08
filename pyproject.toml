@@ -7,7 +7,7 @@ exclude = ["tests"]  # exclude packages matching these glob patterns (empty by d
 
 [project]
 name = "wemportal"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="floek", email="root@floek.net" },
 ]
@@ -19,7 +19,7 @@ dependencies = [
 
 description = "Python module for fetching wemportal data."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
